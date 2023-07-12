@@ -129,6 +129,7 @@ const Contact = (props) => {
     const handleChat = async (u) => {
         try {
             const res = await axiosCilent.get(`zola/conversation/conversationId/${user.id}/${u.id}`);
+            console.log(res);
             navigate(`/t/${res.id}`);
         } catch (error) {
             console.log(error);

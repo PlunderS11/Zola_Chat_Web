@@ -126,21 +126,22 @@ const Info = ({ params, img, nameInfo, conversation, outGroup }) => {
     useEffect(() => {
         getUsersInfo(listUerAdded, setListAddInfo);
     }, [listUerAdded.length]);
+    const list = conversation?.members.reduce((acc, cur) => {
+        acc.push(user.friends.filter((f) => f.id !== cur));
+        return acc;
+    }, []);
     useEffect(() => {
-        const list = conversation?.members.reduce((acc, cur) => {
-            return user.friends.filter((f) => f.id !== cur);
-        }, []);
-        getUsersInfo(list, setListFriendInfo);
-        setListFriendInfo2([...listFriendInfo]);
-        console.log(123);
+        if (conversation) {
+            getUsersInfo(list, setListFriendInfo);
+            setListFriendInfo2([...listFriendInfo]);
+        }
         conversation?.members && getUsersInfo(conversation?.members, setListMemberInfo);
-    }, [conversation?.members.length]);
+    }, [conversation?.members]);
     useEffect(() => {
-        const list = conversation?.members.reduce((acc, cur) => {
-            return user.friends.filter((f) => f.id !== cur);
-        }, []);
-        getUsersInfo(list, setListFriendInfo);
-        setListFriendInfo2([...listFriendInfo]);
+        if (conversation) {
+            getUsersInfo(list, setListFriendInfo);
+            setListFriendInfo2([...listFriendInfo]);
+        }
     }, [modalIsOpenGroup]);
 
     const handleCheck = (id) => {

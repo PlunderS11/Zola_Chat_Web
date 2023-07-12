@@ -13,8 +13,6 @@ import apiConfig from '../../../../api/apiConfig';
 
 const socket = io.connect(apiConfig.baseUrl, { transports: ['websocket'] });
 
-const emotion = () => emojiIcons['Smileys & Emotion'];
-
 const cx = classNames.bind(styles);
 const customStyles = {
     content: {
@@ -137,7 +135,7 @@ const Input = (props) => {
                                     onChange={(e) => handleMultiFile(e)}
                                 />
 
-                                <label for="file">
+                                <label htmlFor="file">
                                     <i className="bx bx-paperclip"></i>
                                 </label>
 
@@ -201,7 +199,7 @@ const Input = (props) => {
                                         </div>
                                     )}
                                 >
-                                    <label for="image">
+                                    <label htmlFor="image">
                                         <i className="bx bxs-image"></i>
                                     </label>
                                 </Tippy>
@@ -216,11 +214,6 @@ const Input = (props) => {
                         onChange={(e) => setChatContent(e.target.value)}
                         className={cx('input')}
                         placeholder="Message"
-                        onKeyPress={(e) => {
-                            if (e.key === 'Enter') {
-                                handleSendMessage();
-                            }
-                        }}
                     />
                     <Tippy
                         visible={showEmojis}

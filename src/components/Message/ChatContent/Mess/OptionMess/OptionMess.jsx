@@ -78,7 +78,7 @@ const OptionMess = ({ noOwn, conversation, mess }) => {
                             </div>
                             <div className={cx('body-md')}>
                                 {conversation?.map((c, i) => (
-                                    <UserItemSearch mess={mess} con={c} button="Gửi" />
+                                    <UserItemSearch key={i} mess={mess} con={c} button="Gửi" />
                                 ))}
                             </div>
                         </div>

@@ -276,50 +276,53 @@ const ChatDetails = (props) => {
                                                         none
                                                     />
 
-                                                    {props.currentChat.creator === user.id && user.id !== userItem.id && (
-                                                        <>
-                                                            <button
-                                                                className={cx('btn-add-frend')}
-                                                                onClick={() => setModalConfirmDelete(true)}
-                                                                // onClick={() => handleDeleteMemGroup(userItem)}
-                                                            >
-                                                                Xóa
-                                                            </button>
+                                                    {props.currentChat.creator === user.id &&
+                                                        user.id !== userItem.id && (
+                                                            <>
+                                                                <button
+                                                                    className={cx('btn-add-frend')}
+                                                                    onClick={() => setModalConfirmDelete(true)}
+                                                                    // onClick={() => handleDeleteMemGroup(userItem)}
+                                                                >
+                                                                    Xóa
+                                                                </button>
 
-                                                            <Modal
-                                                                isOpen={modalConfirmDelete}
-                                                                style={customStyles}
-                                                                ariaHideApp={false}
-                                                            >
-                                                                <div className={cx('wrapper-modal')}>
-                                                                    <div className={cx('content-modal')}>
-                                                                        <div
-                                                                            className={cx('text-confirm')}
-                                                                        >{`Bạn có chắc chắn muốn xóa ${userItem.fullName} ra khỏi nhóm`}</div>
-                                                                    </div>
+                                                                <Modal
+                                                                    isOpen={modalConfirmDelete}
+                                                                    style={customStyles}
+                                                                    ariaHideApp={false}
+                                                                >
+                                                                    <div className={cx('wrapper-modal')}>
+                                                                        <div className={cx('content-modal')}>
+                                                                            <div
+                                                                                className={cx('text-confirm')}
+                                                                            >{`Bạn có chắc chắn muốn xóa ${userItem.fullName} ra khỏi nhóm`}</div>
+                                                                        </div>
 
-                                                                    <div className={cx('btns')}>
-                                                                        <button
-                                                                            className={cx('btnCal', 'btn')}
-                                                                            onClick={() => setModalConfirmDelete(false)}
-                                                                        >
-                                                                            Thoát
-                                                                        </button>
-                                                                        <button
-                                                                            className={cx('btnConf', 'btn')}
-                                                                            onClick={() => {
-                                                                                //handleDelFriend(userIsCaceled);
-                                                                                handleDeleteMemGroup(userItem);
-                                                                                setModalConfirmDelete(false);
-                                                                            }}
-                                                                        >
-                                                                            Xác nhận
-                                                                        </button>
+                                                                        <div className={cx('btns')}>
+                                                                            <button
+                                                                                className={cx('btnCal', 'btn')}
+                                                                                onClick={() =>
+                                                                                    setModalConfirmDelete(false)
+                                                                                }
+                                                                            >
+                                                                                Thoát
+                                                                            </button>
+                                                                            <button
+                                                                                className={cx('btnConf', 'btn')}
+                                                                                onClick={() => {
+                                                                                    //handleDelFriend(userIsCaceled);
+                                                                                    handleDeleteMemGroup(userItem);
+                                                                                    setModalConfirmDelete(false);
+                                                                                }}
+                                                                            >
+                                                                                Xác nhận
+                                                                            </button>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                            </Modal>
-                                                        </>
-                                                    )}
+                                                                </Modal>
+                                                            </>
+                                                        )}
 
                                                     {props.currentChat.creator === userItem?.id && (
                                                         <FontAwesomeIcon

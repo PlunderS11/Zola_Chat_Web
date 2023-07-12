@@ -337,11 +337,11 @@ const Message = (props) => {
                 trickle: false,
                 stream: stream,
             });
-            peer.on('signal', (data) => {
-                socket.emit('answerCall', { signal: data, to: caller });
-            });
             peer.on('stream', (stream) => {
                 friendVideo.current.srcObject = stream;
+            });
+            peer.on('signal', (data) => {
+                socket.emit('answerCall', { signal: data, to: caller });
             });
             peer.signal(callerSignal);
             connectionRef.current = peer;
